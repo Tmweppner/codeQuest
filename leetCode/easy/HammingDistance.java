@@ -30,38 +30,22 @@ class Solution {
         String with_zeroes = "";
         int hamming = 0;
         
+        //X > Y, add 0's to Y
         if(binary_x.length() > binary_y.length()){
-            int zero_buffer = binary_x.length() - binary_y.length() - 1;
+            int zero_buffer = binary_x.length() - binary_y.length();
             while(with_zeroes.length() != zero_buffer){
                 with_zeroes+="0";
             }
-            with_zeroes+=binary_x;
-        
-
-            System.out.println("");
-            System.out.println("x: "+binary_x);
-            System.out.println("y: "+binary_y);
-            System.out.println("with_zeroes: "+ with_zeroes);
-            System.out.println("x_length: "+binary_x.length());
-            System.out.println("");
-
-        
-        
-           
+            with_zeroes+=binary_y;
         
             for(int i = 0; i < with_zeroes.length(); i++){
                 if(with_zeroes.charAt(i) != binary_x.charAt(i)){
                     hamming++;
                 }
             }
-
-        
-        
-        
-        
-        
-        
         }
+
+        //Y > X, add 0's to X
         else if(binary_x.length() < binary_y.length()){
             int zero_buffer = binary_y.length() - binary_x.length(); 
 
@@ -69,14 +53,6 @@ class Solution {
                 with_zeroes+="0";
             }
             with_zeroes+=binary_x;
-            
-            System.out.println("");
-            System.out.println("x: "+binary_x);
-           // System.out.println("y: "+binary_y);
-            System.out.println("with_zeroes: "+ with_zeroes);
-
-            System.out.println("");
-
         
             for(int i = 0; i < with_zeroes.length(); i++){
                 if(binary_y.charAt(i) != with_zeroes.charAt(i)){
@@ -84,6 +60,14 @@ class Solution {
                 }
             }
             
+        }
+        //Y == X
+        else{
+            for(int i = 0; i < binary_y.length(); i++){
+                if(binary_y.charAt(i) != binary_x.charAt(i)){
+                    hamming++;
+                }
+            }
         }
         
         return hamming;
@@ -93,7 +77,7 @@ class Solution {
 
 /*
 
-NOT WORKING
-
+Runtime: 1 ms, faster than 63.85% of Java online submissions for Hamming Distance.
+Memory Usage: 32.6 MB, less than 59.14% of Java online submissions for Hamming Distance.
 
 */
