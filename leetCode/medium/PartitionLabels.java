@@ -23,7 +23,6 @@ class Solution {
         HashMap<Character, Integer> char_start = new HashMap();
         HashMap<Character, Integer> char_end = new HashMap();
         ArrayList<Integer> answer = new ArrayList();
-        int num_of_chars = 0;
         int cur_start = 0;
         int cur_end = 0;        
     
@@ -39,9 +38,8 @@ class Solution {
         }
 
         for(int i = 0; i < S.length(); i++){
-            char cur_char = S.charAt(i);
             cur_start = i;
-            cur_end = char_end.get(cur_char);
+            cur_end = char_end.get(S.charAt(i));
             for(int j = cur_start; j <= cur_end; j++){
                 if(char_end.get(S.charAt(j)) > cur_end ){
                     cur_end = char_end.get(S.charAt(j));
